@@ -1,4 +1,4 @@
-function [ VectorB ] = VectorB( N, Tn )
+function [ VectorB ] = VectorB( Nn, Tn )
 %Calculates vector B for use with calculating the temperature
 
 Pfiss = 3.0864*10^-11; %probability of fission event occuring
@@ -25,7 +25,7 @@ for n = 120:160 % Filling O array
     
 end 
 
-%Calculate the fjs ----------------adasasd
+%Calculate the fjs ----------------
 f = zeros(1,40);
 f = FjShape(40,5); 
 fj = zeros(1,240);
@@ -49,6 +49,12 @@ for n = 41:240
     
    pcpt = (p*Cp); 
     
+end
+
+for j = 1:240
+    
+VectorB = ((Pfiss*Nn*fj(j))/(GA*deltaZ*v*pcpt(j)*A(j)))+((The*h(j)*O(j))/(deltaZ*pcpt(j)*A(j))) +(Tn/deltaT); 
+
 end
 
 end

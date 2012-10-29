@@ -60,7 +60,7 @@ X = diag(aj);
 MatrixA = MatrixA + X; 
 
 % Making a vector of bjs minus the first element
-bjeidt = zeros(1,239); 
+bjedit = zeros(1,239); 
 for n = 1:239
 bjedit(n) = bj(n+1);
 end
