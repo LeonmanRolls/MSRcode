@@ -25,7 +25,7 @@ for n = 120:160 % Filling O array
     
 end 
 
-%Calculate the fjs ----------------
+%Calculate the fjs ----------------adasasd
 f = zeros(1,40);
 f = FjShape(40,5); 
 fj = zeros(1,240);
