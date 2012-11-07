@@ -10,6 +10,7 @@ T0=632.06;% The reactivity feedback equilibrium T0 for the fuel and graphite was
 ans=0;% Initial answer is set to be zero.
 
 
+
 if (UraniumIsotope == 233 || status == 1)% there are two conditions. one is the isotope is Uranium-233. and the other is that it is fuel.
    a= -9.54;% the value of -9.54 is Pcm/C
 end
