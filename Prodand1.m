@@ -11,10 +11,9 @@ BetaEff = 0;
 Sum = 0; 
 
 
-Sum = sumCalculatorForProand1(landerI,c1,c2,c3,c4,c5,c6); 
-    
+Sum = thatSumCalculator(landerI,Nold,c1,c2,c3,c4,c5,c6); 
 
-Prodand1 = ((GA/deltaT)-(GA/N_0)*((Nold/deltaT)+Sum)+BetaEff);
+Prodand1 = ((GA/deltaT)-(GA/N_0)*Sum+BetaEff);
 
 Prodand1; 
 

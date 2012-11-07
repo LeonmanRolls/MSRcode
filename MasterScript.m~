@@ -3,7 +3,7 @@ function MasterScript = MasterScript()
 %BetaEff wihch is the sum of all the betais
 for n = 1:6
     
-   BetaEff = BetaEff + U235BetaEff(n);  
+    
  
 end
 
