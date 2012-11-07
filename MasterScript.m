@@ -11,9 +11,10 @@ end
 g = 80247; %For now we are not varying g so this has been hard coded
 Told = 1000; 
 Nold = 10^9; 
-Prod;  
+Prod; 
+reactivity;
 
-%These are just the initial values of the precursor concentrations
+%These are just the initial values of the precursor concentrations (Ci old)
 c1 = zeros(1,240);
 c2 = zeros(1,240);
 c3 = zeros(1,240);
@@ -29,10 +30,13 @@ c5 = CiZ(Bieff(5), GA, LanderI(5), Nold,0);
 c6 = CiZ(Bieff(6), GA, LanderI(6), Nold,0);
 
 time = 1000; %Time to run the simulation for in seconds 
+g = 80247; %From page 61 of MSR modelling paper, for now will be kept constant
 
-Told = updateTemp(Nold,Told);
+%The first thing to be calculated is the update of the temperature
+told = updateTemp(Nold,Told);
 
-%update reactivity
+%Update the reactivity...
+reactivity = reactivity(Told); 
 
 %Calculate the precursor concentrations for all i
 %Likely that we will have to provide the neutron number properly later
@@ -45,7 +49,6 @@ c6 = updatePrecursorI(c6,6,Nold);
 
 %Calculate the rod reactivitiy
 Prod = updateProd(Nold, c1,c2,c3,c4,c5,c6); 
-
 
 %Calculate N
 

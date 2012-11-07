@@ -1,9 +1,18 @@
-function reactivity = reactivity (f,T,UraniumIsotope,status) 
+function reactivity = reactivity (T,UraniumIsotope,status) 
 % Calculation of the reactivity with variables f,T,UraniumIsotope and status.
 % The value of f has been obtained already from the function, fj.
 % Tj is the newest avaiable temperature in volume cell j.
 % UraniumIsotope == 233 represents Uranium-233 and UraniumIsotope == 235 represents Uranium-235
 % In the homogeneous model, the status would be 1. While, in the non-homogeneous model, the status would be 2.
+
+f = zeros(1,240); 
+Z = FjShape(40,5);
+
+for n = 1:40
+   
+    f(n) = FjShape(n); 
+    
+end
 
 a1=0; % a1 is a quantity, which is given.
 a2=0; % a2 is a quantity, which is given.

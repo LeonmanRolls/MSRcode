@@ -1,4 +1,4 @@
-function [ Prodand1 ] = Prodand1(Nold, landerI, c1,c2,c3,c4,c5,c6, BetaEffI  )
+function [ Prodand1 ] = Prodand1(Nold, landerI, c1,c2,c3,c4,c5,c6, BetaEff  )
 %If we want to run a zero power experiment then we need to use this function
 %to adjust the position of the graphite rod
 
