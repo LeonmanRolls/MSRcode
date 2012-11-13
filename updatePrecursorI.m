@@ -1,9 +1,10 @@
-function [ Ciand1 ] = updatePrecursorI( oldCI, i, Nn )
+function [ Ciand1 ] = updatePrecursorI( oldCI, i, Nn, U235lander, U235BetaEff)
 %Update the precursor concentration of a paticular group
 %The iteration over the groups is handled in the master script
 
 MatrixA = zeros(240,240);
 VectorB = zeros(1,240); 
+GA = 2.4*10^-4;
 
 deltaT = 1;
 deltaZ = 5; 
@@ -18,12 +19,26 @@ g = 80.247*10^3  % fuel flow rate
 %Now we can work out aj and bj; 
 
 for j = 1:240
-aj = ((1/deltaT)+U235lander(i)+((g)/(A(j)*deltaZ)));
+aj(j) = ((1/deltaT)+U235lander(i)+((g)/(A(j)*deltaZ)));
 end
 
 for j = 1:240   
-bj = -((g)/(A(j)*deltaZ));
+bj(j) = -((g)/(A(j)*deltaZ));
 end    
+
+%Need to fill an array to extend oldCI to 240 j
+oldCI1 = zeros(1,240); 
+for n = 1:40
+   
+    oldCI1(n) = oldCI(n);
+    
+end
+
+for n = 41:240
+    
+   oldCI1(n) = 0; 
+    
+end
 
 % Now filling up the matrix A
 MatrixA(240,1) = bj(1); 
@@ -36,7 +51,7 @@ for n = 1:239
 bjedit(n) = bj(n+1);
 end
 
-X = diag(1,bjedit);
+X = diag(bjedit,1);
 MatrixA = MatrixA + X; 
 
 
@@ -56,7 +71,7 @@ end
 %----------------------- 
 
 for j = 1:240    
-VectorB = (((U235BetaEff(i)*fj(j)*Nn)/(GA*A(j)*deltaZ))+(oldCI(j)/deltaT));
+VectorB = (((U235BetaEff(i)*fj(j)*Nn)/(GA*A(j)*deltaZ))+(oldCI1(j)/deltaT));
 end
 
 %The important bit

@@ -10,7 +10,7 @@ Z = FjShape(40,5);
 
 for n = 1:40
    
-    f(n) = FjShape(n); 
+    f(n) = Z(n); 
     
 end
 
@@ -21,6 +21,10 @@ ans=0;% Initial answer is set to be zero.
 reactivity1=0;% Initial answer is set to be zero.
 reactivity2=0;% Initial answer is set to be zero.
 
+T1 = zeros(1,240); 
+for n = 1:240
+T1(n) = T0;
+end
 
 if UraniumIsotope == 233% Uranium isotope is 233
    a1=-9.54;% the value of alpha is -9.54 Pcm/C for fuel
@@ -33,16 +37,16 @@ if UraniumIsotope == 235%there are two conditions. one is the isotope is Uranium
 end
 
 for j = 1:240 % from first to last value
-    ans=ans+(f(j)*T(j)); %total sum of mutiplications of f(j) and T(j)
+    ans=ans+(f(j)*T1(j)); %total sum of mutiplications of f(j) and T(j)
 end
 
-if state == 1% in the homogeneous model
+if status == 1% in the homogeneous model
    reactivity=(a1+a2)*(ans-T0);% calculates the reactivity
    reactivity;
 end
 
 
-if state ==2% in the non-homogeneous model
+if status ==2% in the non-homogeneous model
    reactivity1=a1*(ans-T0);% calculates the reactivity for fuel
    reactivity2=a2*(ans-T0);% calculates the reactivity for graphite
    reactivity=reactivity1+reactivity2;%% calculates the total reactivity

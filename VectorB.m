@@ -12,16 +12,23 @@ The = 566.7; %Assumed to be constant and a given value. Doesn't seem to be given
         %the heat exhanger. Measured in celcius
 h = zeros(1,240); % Heat exchanger coefficent
 O = zeros(1,240); % circumference of the heat exchanger
+p = 2263*10^-6 % fuel density
+Cp = 1982.5 % Heat capacity
+Cp_gr = 1750  % heat capacity of the graphite 
+Mgr = 3715 % Total graphite mass inside the core.. at the moment this
+                 % is equal to the fuel volume inside the core
+Vfuel_core = 818.8*10^3; % Volume of the fuel inside the core
+deltaT = 1;
 
 for n = 120:160 % Filling the h array 
     
-    h = 0.3486;
+    h(n) = 0.3486;
     
 end 
 
 for n = 120:160 % Filling O array
     
-    O = 1296.85;
+    O(n) = 1296.85;
     
 end 
 
@@ -41,13 +48,13 @@ end
 for n = 1:40 % filling up the pcpt values, which are different inside and 
              % outside the core 
     
- pcpt = (p*Cp) +((Cp_gr*Mgr)/(Vfuel_core));
+ pcpt(n) = (p*Cp) +((Cp_gr*Mgr)/(Vfuel_core));
     
 end
 
 for n = 41:240
     
-   pcpt = (p*Cp); 
+   pcpt(n) = (p*Cp); 
     
 end
 

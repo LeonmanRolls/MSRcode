@@ -70,17 +70,20 @@ Prod = updateProd(Nold, c1,c2,c3,c4,c5,c6, LanderI);
 %Calculate N
 Nold = updateNeutronNumber(Nold,c1,c2,c3,c4,c5,c6,reac,Prod,BetaEff,LanderI);
 
- 
 
-told
-%c1
-%c2
-%c3
-%c4
-%c5
-%c6
-%Prod
-%Nold
+%returnTemp(n) = told;
+%returnC1(n) = c1;
+%returnC2(n) = c2;
+%returnC3(n) = c3;
+%returnC4(n) = c4;
+%returnC5(n) = c5;
+%returnC6(n) = c6;
+%returnProd(n) = Prod;
+%returnNold(n) = Nold; 
+
+told;
+
+
 
 
 end

@@ -1,9 +1,10 @@
-function [ Nand1 ] = updateNeutronNumber( Nold, landerI, c1, c2, c3, c4, c5 ,c6, reactivity,Prod, BetaEff )
+function [ Nand1 ] = updateNeutronNumber( Nold, c1, c2, c3, c4, c5 ,c6, reactivity,Prod, BetaEff,LanderI )
 %Will return N for the next time step 
 
 A = area(200,400,240); %The shape of the reacor esentially
 deltaz = 5; %Size of the Zs, initially 5cm
 GA = 2.4*10^-4;
+deltaT = 1; 
 
 %the fission shape for the reactor
 Z = zeros(1,240);
@@ -37,7 +38,7 @@ for n = 1:40
 end
 %-------------------------------*
 
-thatSum = thatSumCalculator(Nold,c1,c2,c3,c4,c5,c6); 
+thatSum = thatSumCalculator(Nold,c1,c2,c3,c4,c5,c6,LanderI); 
 Nand1 = thatSum*(1/((1/deltaT)-((reactivity+Prod-BetaEff)/GA)))
 
 end

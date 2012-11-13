@@ -31,5 +31,4 @@ ylabel('Realtive amount of fission');
 end
 
 
-
-CiZ; 
+end

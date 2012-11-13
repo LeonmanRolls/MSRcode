@@ -1,8 +1,9 @@
-function [ sumOutput ] = thatSumCalculator( Nold, c1, c2, c3,c4, c5, c6 )
+function [ sumOutput ] = thatSumCalculator( Nold, c1, c2, c3,c4, c5, c6, U235lander )
 %Calculates that sum that shows up in various places, like Prod and Nand1
 
 A = area(200,400,240);
 deltaZ = 5;
+deltaT = 1; 
 
 %Adjoint flux shape-----------
 AdjFlux = zeros(1,240);
@@ -20,7 +21,7 @@ X = zeros(1,40);
 X = FjShape(40,5);
 for n = 1:40
 
-    Fj = X(n); 
+    Fj(n) = X(n); 
     
 end
 %-------------------------------*
@@ -29,7 +30,7 @@ end
 bottomSum = 0; 
 for n = 1:240
     
-bottomSum = bottomSum + (fj(n)*AdjFlux(n));
+bottomSum = bottomSum + (Fj(n)*AdjFlux(n));
 
 end
 %------------------------------*

@@ -19,38 +19,39 @@ MatrixA = zeros(240,240);
 
 for n = 120:160 % Filling the h array 
     
-    h = 0.3486;
+    h(n) = 0.3486;
     
 end 
 
 for n = 120:160 % Filling O array
     
-    O = 1296.85;
+    O(n)= 1296.85;
     
 end 
 
 for n = 1:40 % filling up the pcpt values, which are different inside and 
              % outside the core 
     
- pcpt = (p*Cp) +((Cp_gr*Mgr)/(Vfuel_core));
+ pcpt(n) = (p*Cp) +((Cp_gr*Mgr)/(Vfuel_core));
     
 end
 
 for n = 41:240
     
-   pcpt = (p*Cp); 
+   pcpt(n) = (p*Cp); 
     
 end
 
 %Now we can work out aj and bj; 
 
 for j = 1:240
-aj = (1/deltaT) + ((p*Cp*g)/(pcpt(j)*a(j)*deltaZ)) + ((h(j)*O(j))/(pcpt(j)*a(j)*deltaZ));
+aj(j) = (1/deltaT) + ((p*Cp*g)/(pcpt(j)*A(j)*deltaZ)) + ((h(j)*O(j))/(pcpt(j)*A(j)*deltaZ));
 end
 
 for j = 1:240
    
-bj = -((p*Cp*g)/(pcpt*A(j)*deltaZ));
+bla = A(j);     
+bj(j) = -((p*Cp*g)/(pcpt(j)*bla*deltaZ));
     
 end
 
@@ -65,7 +66,7 @@ for n = 1:239
 bjedit(n) = bj(n+1);
 end
 
-X = diag(1,bjedit);
+X = diag(bjedit,1);
 MatrixA = MatrixA + X; 
 
 MatrixA;%end of function
